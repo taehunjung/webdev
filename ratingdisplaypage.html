@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html> 
+
+    <head>
+         <title> RatemyCourses </title>
+         <link rel="stylesheet" href="styles.css">
+         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+         <header>
+            <nav>
+                <ul>
+                    <div class="top-bar">
+                        <div class="logo">
+                            <img src="Images/Original.png"> 
+                        </div>
+                        <nav class="navbar">
+                            <ul class="menu">
+                                <li> <a href="about.html"> About </a> </li>
+                                <li> <a href="index.html"> Home </a> </li>
+                                <li> <a href="contact.html"> Contact </a> </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </ul>
+            </nav>
+
+            <div class=ratinglist>
+                <?php
+                $link=mysqli_connect('localhost', 'root', '', 'rateMyCourses');
+                $query="SELECT * from userratingform";
+                $result=mysqli_query($query);
+                ?>
+                
+                <div class=ratingtext> 
+                    <h1> Ratings: </h1>
+                </div>
+                
+                <div class=ratingdetails>
+                <?php
+                    while($rows=mysqli_fetch($result)) {
+                ?>
+                        <h2> Course Code: </h2> 
+                        <?php echo $rows['Coursecode']; ?>
+                        <h2> Difficulty: </h2>
+                        <?php echo $rows['Difficultylevel']; ?>
+                        <h2> Applicability: </h2>
+                        <?php echo $rows['Applicabilitylevel']; ?>
+                <?php
+                    }
+                ?>
+                </div>
+
+            </div>
+
+
+        </header>   
+    </body>
+    
+
+</html>
+
